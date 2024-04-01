@@ -8,33 +8,45 @@ const Timeline = async () => {
         Resume
       </h1>
       <h1 className="text-right text-white mt-3">5 Years of Experience</h1>
-      <div className="lg:flex gap-5 mt-5">
+      <div className="flex gap-5 mt-5">
         <div>
           {/* Education ------------------> */}
           <div className="">
-            <h1 className="text-3xl text-white mb-5">Education</h1>
+            <span className="text-3xl text-white border-b border-b-orange-400">Education</span>
+            <div className="mt-10">
             {data?.user?.timeline?.map((item, index) => (
-              <div className="" key={index}>
+              <div className="  " key={index}>
                 {item.forEducation && (
-                  <div className="grid grid-cols-7 gap-5  text-white">
-                    <div className="border-r px-5 col-span-2 relative">
+                  <div className="grid grid-cols-9 gap-5 justify-between  text-white">
+                    <div className="col-span-2">
                       <div>
-                      <h1>{item.company_name}</h1>
-                      <h1>
-                        {new Date(item.startDate).toLocaleDateString("en-US", {
-                          year: "numeric",
-                          month: "long",
-                          day: "numeric",
-                        })}
-                      </h1>
-
-                      </div>
-                      <div className="h-4 w-4 rounded-full bg-red-800 absolute -right-2 top-2">
-
+                        <h1 className="text-xl">
+                          {new Date(item.startDate).toLocaleDateString(
+                            "en-US",
+                            {
+                              year: "numeric",
+                              month: "long",
+                              // day: "numeric",
+                            }
+                          )}{" "}
+                          -
+                          {new Date(item.endDate).toLocaleDateString("en-US", {
+                            year: "numeric",
+                            month: "long",
+                            // day: "numeric",
+                          })}
+                        </h1>
+                        <h1 className="text-right text-sm">
+                          {item.company_name}
+                        </h1>
                       </div>
                     </div>
+                      <div className="border-r  px-5 col-span-2 relative">
+                      <div className="h-4 w-4 rounded-full  bg-[#333333] absolute -right-2 top-2"></div>
+                      </div>
 
-                    <div className="col-span-5 pb-5 space-y-5">
+
+                    <div className="col-span-5 pb-5 space-y-5 ">
                       <h1>{item.jobTitle}</h1>
                       <h1>{item.bulletPoints}</h1>
                     </div>
@@ -42,33 +54,46 @@ const Timeline = async () => {
                 )}
               </div>
             ))}
+            </div>
           </div>
 
           {/* Experience  ----------------------> */}
-          <div className="mt-5">
-            <h1 className="text-3xl text-white mb-5">Experience</h1>
-            {data.user.timeline.map((item, index) => (
+          <div className="mt-10">
+            <span className="text-3xl text-white border-b border-b-orange-400">Experience</span>
+           <div className="mt-10">
+           {data.user.timeline.map((item, index) => (
               <div className="" key={index}>
                 {!item.forEducation && (
-                  <div className="grid grid-cols-7 gap-5  text-white">
-                    <div className="border-r px-5 col-span-2  relative">
+                  <div className="grid grid-cols-9 gap-5  text-white">
+                    <div className="col-span-2">
                       <div>
-                      <h1>{item.company_name}</h1>
-                      <h1>
-                        {new Date(item.startDate).toLocaleDateString("en-US", {
-                          year: "numeric",
-                          month: "long",
-                          day: "numeric",
-                        })}
-                      </h1>
-
-                      </div>
-                      <div className="h-4 w-4 rounded-full bg-red-800 absolute -right-2 top-2">
-
+                        <h1 className="text-xl">
+                          {new Date(item.startDate).toLocaleDateString(
+                            "en-US",
+                            {
+                              year: "numeric",
+                              month: "long",
+                              // day: "numeric",
+                            }
+                          )}{" "}
+                          -
+                          {new Date(item.endDate).toLocaleDateString("en-US", {
+                            year: "numeric",
+                            month: "long",
+                            // day: "numeric",
+                          })}
+                        </h1>
+                        <h1 className="text-right text-sm">
+                          {item.company_name}
+                        </h1>
                       </div>
                     </div>
+                      <div className="border-r  px-5 col-span-2 relative">
+                      <div className="h-4 w-4 rounded-full  bg-[#333333] absolute -right-2 top-2"></div>
+                      </div>
 
-                    <div className="col-span-5 pb-5 space-y-5">
+
+                    <div className="col-span-5 pb-5 space-y-5 ">
                       <h1>{item.jobTitle}</h1>
                       <h1>{item.bulletPoints}</h1>
                     </div>
@@ -76,17 +101,16 @@ const Timeline = async () => {
                 )}
               </div>
             ))}
+           </div>
           </div>
         </div>
-        <div>
-          {" "}
-          optimized database schemas for performance and scalability.
-          Implemented real-time messaging features using WebSockets and Redis.
-          Worked closely with frontend developers to design APIs and ensure
-          smooth integration with the frontend. DataTech Solutions
-          2024-03-13T00:00:00.000Z Full Stack Developer{" "}
-        </div>
       </div>
+      <button
+        type="button"
+        class="border-2 mt-10 border-[#ff714a] hover:bg-[#ff714a] px-7 py-2 text-white"
+      >
+        Download CV{" "}
+      </button>
     </div>
   );
 };

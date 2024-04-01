@@ -1,15 +1,58 @@
-import getAllData from "@/lib/allData";
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import React, { useState, useEffect } from "react";
+const CustomNavbar = () => {
+  const [img, setUserData] = useState();
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          "https://portfolio-backend-30mp.onrender.com/api/v1/get/user/65b3a22c01d900e96c4219ae"
+        );
+        if (!response.ok) {
+          throw new Error("Failed to fetch data");
+        }
+        const data = await response.json();
+        setUserData(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
 
-const CustomNavbar = async () => {
-  const img = await getAllData();
+    fetchData();
+  }, []);
+
+  const location = usePathname();
   const links = (
     <ul className="text-white text-center text-sm w-40">
-      <li className="py-3 border-y-2 border-[#333333] hover:border-r-white hover:border-r-2 hover:bg-[#333333]">
+      <li
+        className={`${
+          location === "/"
+            ? "py-3 border-y-2 border-[#333333] border-r-orange-500 border-r-2 bg-[#333333] "
+            : ""
+        } py-3 border-y-2 border-[#333333] hover:border-r-white hover:border-r-2 hover:bg-[#333333]" `}
+      >
+        <Link href="/">Home</Link>
+      </li>
+      <li
+        className={`${
+          location === "/#about"
+            ? "py-3 border-y-2 border-[#333333] border-r-orange-500 border-r-2 bg-[#333333] "
+            : ""
+        } py-3 border-y-2 border-[#333333] hover:border-r-white hover:border-r-2 hover:bg-[#333333]" `}
+      >
         <Link href="#about">About</Link>
       </li>
-      <li className="py-3 border-b-2 border-[#333333] hover:border-r-white hover:border-r-2 hover:bg-[#333333]">
+      <li
+        className={`${
+          location === "/#timeline"
+            ? "py-3 border-y-2 border-[#333333] border-r-orange-500 border-r-2 bg-[#333333] "
+            : ""
+        } py-3 border-y-2 border-[#333333] hover:border-r-white hover:border-r-2 hover:bg-[#333333]" `}
+      >
         <Link href="#timeline">Resume</Link>
       </li>
       <li className="py-3 border-b-2 border-[#333333] hover:border-r-white hover:border-r-2 hover:bg-[#333333]">
@@ -21,7 +64,7 @@ const CustomNavbar = async () => {
       <li className="py-3 border-b-2 border-[#333333] hover:border-r-white hover:border-r-2 hover:bg-[#333333]">
         <Link href="#projects">Projects</Link>
       </li>
-      
+
       <li className="py-3 border-b-2 border-[#333333] hover:border-r-white hover:border-r-2 hover:bg-[#333333]">
         <Link href="#testimonials">Testimonial</Link>
       </li>

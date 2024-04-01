@@ -1,13 +1,36 @@
 "use client";
+import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import { usePathname } from "next/navigation";
+import React, { useState, useEffect } from "react";
 
 const SmallDeviceNav = () => {
+  const location = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
+
+  const [img, setUserData] = useState();
+  useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const response = await fetch('https://portfolio-backend-30mp.onrender.com/api/v1/get/user/65b3a22c01d900e96c4219ae');
+          if (!response.ok) {
+            throw new Error('Failed to fetch data');
+          }
+          const data = await response.json();
+          setUserData(data);
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }
+      };
+  
+      fetchData();
+    }, []); 
+
+
 
   const links = (
     <ul className="text-white text-sm ">
@@ -43,9 +66,15 @@ const SmallDeviceNav = () => {
             href="#"
             className="flex items-center space-x-3 rtl:space-x-reverse"
           >
-            {/* <img src="https://flowbite.com/docs/images/logo.svg" className="h-8" alt="Flowbite Logo" /> */}
+            <Image
+          className=" h-12 w-12  object-cover  rounded-2xl"
+          height={500}
+          width={500}
+          src={img?.user?.about?.avatar?.url}
+          alt="image"
+        />
             <span className="text-white self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-              Portfolio
+            {img?.user?.about?.name}
             </span>
           </a>
           <button

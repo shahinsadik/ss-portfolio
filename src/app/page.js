@@ -1,5 +1,5 @@
 import Hero from "@/components/hero/Hero";
-import CustomNavbar from "@/components/navbar/Navbar";
+
 import SmallDeviceNav from "@/components/navbar/SmallDeviceNav";
 import Projects from "@/components/project/Projects";
 
@@ -8,6 +8,7 @@ import Skill from "@/components/skills/Skill";
 import Timeline from "@/components/timeline/Timeline";
 import Testimonials from "@/components/testimonials/Testimonials";
 import Contact from "@/components/contact/Contact";
+import CustomNavbar from "@/components/navbar/Navbar";
 
 
 
