@@ -39,7 +39,7 @@ const CustomNavbar = () => {
       </li>
       <li
         className={`${
-          location === "/#about"
+          location === "#about"
             ? "py-3 border-y-2 border-[#333333] border-r-orange-500 border-r-2 bg-[#333333] "
             : ""
         } py-3 border-y-2 border-[#333333] hover:border-r-white hover:border-r-2 hover:bg-[#333333]" `}
@@ -48,7 +48,7 @@ const CustomNavbar = () => {
       </li>
       <li
         className={`${
-          location === "/#timeline"
+          location === "#timeline"
             ? "py-3 border-y-2 border-[#333333] border-r-orange-500 border-r-2 bg-[#333333] "
             : ""
         } py-3 border-y-2 border-[#333333] hover:border-r-white hover:border-r-2 hover:bg-[#333333]" `}
@@ -102,6 +102,8 @@ const CustomNavbar = () => {
               width={500}
               src={social?.image?.url}
               alt="social_icon"
+              // placeholder="blur"
+              // blurDataURL={social?.image?.url}
             />
           </div>
         ))}

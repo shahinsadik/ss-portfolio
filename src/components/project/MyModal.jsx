@@ -63,7 +63,7 @@ const MyModal = ({ project }) => {
               {/* Modal body */}
               <div className="">
                 <div className="grid lg:grid-cols-2 grid-cols-1">
-                  <div className=" ">
+                  <div  data-aos="zoom-in-up" data-aos-duration="2000" className=" ">
                     <Image
                       className="w-full bg-cover"
                       height={500}

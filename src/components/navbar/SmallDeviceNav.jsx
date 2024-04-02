@@ -72,6 +72,8 @@ const SmallDeviceNav = () => {
           width={500}
           src={img?.user?.about?.avatar?.url}
           alt="image"
+          // placeholder="blur"
+          // blurDataURL={img?.user?.about?.avatar?.url}
         />
             <span className="text-white self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
             {img?.user?.about?.name}

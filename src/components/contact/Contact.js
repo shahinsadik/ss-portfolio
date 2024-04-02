@@ -15,30 +15,30 @@ const Contact = async () => {
       </h1>
       <h1 className="text-right text-white mt-3">Get in Touch</h1>
       <div className="grid lg:grid-cols-4 grid-cols-2 mt-5 gap-5">
-        <div className="border p-10 flex flex-col justify-center items-center  bg-[#333333]">
+        <div  data-aos="fade-left" className="border p-10 flex flex-col justify-center items-center  bg-[#333333]">
           <IoCallOutline className="hover:animate-spin text-4xl text-center mb-2 text-white " />
           <h1 className="text-center text-white ">
             {contact.user.about.phoneNumber}
           </h1>
         </div>
-        <div className="border p-10 flex flex-col justify-center items-center  bg-[#333333]">
+        <div data-aos="fade-left" data-aos-duration="1000" className="border p-10 flex flex-col justify-center items-center  bg-[#333333]">
           <IoLocationOutline className=" hover:animate-spin text-4xl text-center mb-2 text-white " />
           <h1 className="text-center text-white">
             {contact.user.about.address}
           </h1>
         </div>
-        <div className="border p-10 flex flex-col justify-center items-center  bg-[#333333]">
+        <div data-aos="fade-left" data-aos-duration="1500" className="border p-10 flex flex-col justify-center items-center  bg-[#333333]">
           <IoMailOutline className="hover:animate-spin text-4xl text-center mb-2 text-white " />
           <h1 className="text-center text-white">
             {contact.user.about.contactEmail}
           </h1>
         </div>
-        <div className="border p-10 flex flex-col justify-center items-center  bg-[#333333]">
+        <div data-aos="fade-left" data-aos-duration="2000" className="border p-10 flex flex-col justify-center items-center  bg-[#333333]">
           <IoCheckmarkCircleSharp className="hover:animate-spin text-4xl text-center mb-2 text-white " />
           <h1 className="text-center text-white">Got Hired</h1>
         </div>
       </div>
-      <div className="grid grid-cols-2 pt-10 bg-[#222222] lg:mx-20 gap-5">
+      <div data-aos="fade-left" data-aos-duration="1000" className="grid grid-cols-2  p-10 bg-[#333333] border lg:mx-20 gap-5   mt-5">
         <div className="flex flex-col  ">
           <input
             id="Name"

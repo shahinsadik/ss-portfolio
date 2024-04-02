@@ -19,7 +19,7 @@ const Projects = async () => {
               key={project?.title}
               className=" shadow-2xl bg-[#333333] rounded-b-md"
             >
-              <div className=" ">
+              <div data-aos="zoom-in-up" data-aos-duration="1000" className=" ">
                 <Image
                   className=" w-full  hover:animate-pulse  bg-cover   "
                   height={500}

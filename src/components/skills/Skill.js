@@ -20,6 +20,8 @@ const Skill = async () => {
                   width={500}
                   src={img.image.url}
                   alt={img?.name}
+                  // placeholder="blur"
+                  // blurDataURL={img.image.url}
                 /> : ""}
                 
               </div>
