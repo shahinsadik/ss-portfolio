@@ -1,64 +1,92 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import React, { useState, useEffect } from "react";
-
+import { usePathname } from "next/navigation";
+const sectionIds = {
+  about: "about",
+  timeline: "timeline",
+  service: "service",
+  skill: "skill",
+  projects: "projects",
+  testimonials: "testimonials",
+  contact: "contact",
+};
 const SmallDeviceNav = () => {
-  const location = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
-
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
-  const [img, setUserData] = useState();
+  const [userData, setUserData] = useState();
+  const [activeSection, setActiveSection] = useState();
+  const location = usePathname();
+
   useEffect(() => {
-      const fetchData = async () => {
-        try {
-          const response = await fetch('https://portfolio-backend-30mp.onrender.com/api/v1/get/user/65b3a22c01d900e96c4219ae');
-          if (!response.ok) {
-            throw new Error('Failed to fetch data');
-          }
-          const data = await response.json();
-          setUserData(data);
-        } catch (error) {
-          console.error('Error fetching data:', error);
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          "https://portfolio-backend-30mp.onrender.com/api/v1/get/user/65b3a22c01d900e96c4219ae"
+        );
+        if (!response.ok) {
+          throw new Error("Failed to fetch data");
         }
-      };
-  
-      fetchData();
-    }, []); 
+        const data = await response.json();
+        setUserData(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
 
+    fetchData();
 
+    // Add event listener for scroll
+    window.addEventListener("scroll", handleScroll);
 
-  const links = (
-    <ul className="text-white text-sm ">
-      <li className="py-3 border-y-2 border-[#333333] hover:border-r-white hover:border-r-2 hover:bg-[#333333]">
-        <Link href="#about">About</Link>
-      </li>
-      <li className="py-3 border-b-2 border-[#333333] hover:border-r-white hover:border-r-2 hover:bg-[#333333]">
-        <Link href="#service">Services</Link>
-      </li>
-      <li className="py-3 border-b-2 border-[#333333] hover:border-r-white hover:border-r-2 hover:bg-[#333333]">
-        <Link href="#skill">Skills</Link>
-      </li>
-      <li className="py-3 border-b-2 border-[#333333] hover:border-r-white hover:border-r-2 hover:bg-[#333333]">
-        <Link href="#projects">Projects</Link>
-      </li>
-      <li className="py-3 border-b-2 border-[#333333] hover:border-r-white hover:border-r-2 hover:bg-[#333333]">
-        <Link href="#timeline">Timeline</Link>
-      </li>
-      <li className="py-3 border-b-2 border-[#333333] hover:border-r-white hover:border-r-2 hover:bg-[#333333]">
-        <Link href="#testimonial">Testimonial</Link>
-      </li>
-      <li className="py-3 border-b-2 border-[#333333] hover:border-r-white hover:border-r-2 hover:bg-[#333333]">
-        <Link href="#contact">Contact</Link>
-      </li>
-    </ul>
-  );
+    // Cleanup event listener on component unmount
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    handleScroll();
+  }, [location]); // Re-run on location change
+
+  const links = [
+    { href: "about", label: "About" },
+    { href: "timeline", label: "Resume" },
+    { href: "service", label: "Services" },
+    { href: "skill", label: "Skills" },
+    { href: "projects", label: "Projects" },
+    { href: "testimonials", label: "Testimonials" },
+    { href: "contact", label: "Contact" },
+  ];
+
+  const getNavLinkClass = (sectionName) =>
+    activeSection === sectionName
+      ? "py-3  border-[#333333] border-r-orange-500 border-r-2 bg-[#333333] "
+      : "py-3 border-y border-[#333333] hover:border-r-white hover:border-r-2 hover:bg-[#333333] ";
+
+  const handleScroll = () => {
+    const targetHeight = window.innerHeight / 2;
+    for (const [section, id] of Object.entries(sectionIds)) {
+      const sectionElement = document.getElementById(id);
+      const rect = sectionElement?.getBoundingClientRect();
+      if (
+        rect?.top &&
+        rect?.top <= targetHeight &&
+        rect?.bottom &&
+        rect?.bottom >= targetHeight
+      ) {
+        setActiveSection(section);
+        break;
+      }
+    }
+  };
 
   return (
+    
     <div>
       <nav className="border-gray-200 fixed top-0 right-0 w-full lg:hidden  z-[99] shadow-xl bg-[#222222] dark:bg-gray-800 dark:border-gray-700">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -70,13 +98,13 @@ const SmallDeviceNav = () => {
           className=" h-12 w-12  object-cover  rounded-2xl"
           height={500}
           width={500}
-          src={img?.user?.about?.avatar?.url}
+          src={userData?.user?.about?.avatar?.url}
           alt="image"
           // placeholder="blur"
           // blurDataURL={img?.user?.about?.avatar?.url}
         />
             <span className="text-white self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-            {img?.user?.about?.name}
+            {userData?.user?.about?.name}
             </span>
           </a>
           <button
@@ -107,7 +135,20 @@ const SmallDeviceNav = () => {
             className={`w-full h-screen ${menuOpen ? "" : "hidden"}`}
             id="navbar-hamburger"
           >
-            {links}
+            <div className="text-white text-center text-sm ">
+             {links.map(({ href, label }) => (
+                <a
+                  href={
+                    location === "/"
+                      ? `#${sectionIds[href]}`
+                      : `/#${sectionIds[href]}`
+                  }
+                  key={label}
+                >
+                  <div className={`${getNavLinkClass(href)} `}>{label}</div>
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </nav>

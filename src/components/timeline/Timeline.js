@@ -3,7 +3,7 @@ import getAllData from "@/lib/allData";
 const Timeline = async () => {
   const data = await getAllData();
   return (
-    <div id="timeline" className=" p-5 lg:p-10">
+    <div id="timeline" className="p-2 lg:p-10 ">
       <h1 className="font-bold text-2xl text-white pb-3 border-b-[#333333] border-b-2">
         Resume
       </h1>
@@ -11,7 +11,7 @@ const Timeline = async () => {
       <div className="flex gap-5 mt-5">
         <div>
           {/* Education ------------------> */}
-          <div className="">
+          <div className="p-2">
             <span className="text-3xl text-white border-b border-b-orange-400">Education</span>
             <div className="mt-10">
             {data?.user?.timeline?.map((item, index) => (
@@ -20,7 +20,7 @@ const Timeline = async () => {
                   <div className="grid grid-cols-9 gap-5 justify-between  text-white">
                     <div className="col-span-2">
                       <div>
-                        <h1 className="text-xl">
+                        <h1 className="lg:text-xl ">
                           {new Date(item.startDate).toLocaleDateString(
                             "en-US",
                             {
@@ -58,7 +58,7 @@ const Timeline = async () => {
           </div>
 
           {/* Experience  ----------------------> */}
-          <div className="mt-10">
+          <div className="mt-10 p-2">
             <span className="text-3xl text-white border-b border-b-orange-400">Experience</span>
            <div className="mt-10">
            {data.user.timeline.map((item, index) => (
@@ -67,7 +67,7 @@ const Timeline = async () => {
                   <div className="grid grid-cols-9 gap-5  text-white">
                     <div className="col-span-2">
                       <div>
-                        <h1 className="text-xl">
+                        <h1 className="lg:text-xl">
                           {new Date(item.startDate).toLocaleDateString(
                             "en-US",
                             {

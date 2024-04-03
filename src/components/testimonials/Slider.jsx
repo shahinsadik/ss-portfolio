@@ -28,7 +28,7 @@ const Slider = () => {
     <div className="">
       <div className="h-screen">
         <Carousel
-          onSlideChange={(index) => console.log("onSlideChange()", index)}
+          onSlideChange={(index) =>  console.log("onSlideChange()", index)}
         >
           {items.map((item) => (
             <div key={item._id}>

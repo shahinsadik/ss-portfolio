@@ -4,7 +4,7 @@ import Image from "next/image";
 const Skill = async () => {
   const img = await getAllData();
   return (
-    <div id="skill" className="lg:h-screen p-2 lg:p-10 ">
+    <div id="skill" className="lg:h-screen p-2 lg:p-10">
       <div>
         <h1 className="font-bold text-2xl text-white pb-3 border-b-[#333333] border-b-2">
           My Skills
