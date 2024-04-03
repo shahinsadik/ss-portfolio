@@ -1,5 +1,5 @@
 # Portfolio Website
-
+Live Link : [https://ss-portfolio-omega.vercel.app/](https://ss-portfolio-omega.vercel.app/)
 This is a portfolio website built using Next.js and Tailwind CSS.
 
 
@@ -30,7 +30,7 @@ pnpm dev
 # or
 bun dev
 ```
-Live Link : [https://ss-portfolio-omega.vercel.app/](https://ss-portfolio-omega.vercel.app/)
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
