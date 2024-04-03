@@ -14,14 +14,16 @@ const Skill = async () => {
           {img?.user?.skills?.map((img) => (
             <div key={img?.platform} className="">
               <div className="flex gap-5 p-5 bg-[#333333] justify-center items-center">
-              {img.image.url ? <Image
+              {img.image.url ? 
+              <Image
+
                   className=" lg:h-16 lg:w-16 w-6 h-6 hover:animate-spin  bg-cover rounded-2xl   "
                   height={500}
                   width={500}
                   src={img.image.url}
                   alt={img?.name}
-                  // placeholder="blur"
-                  // blurDataURL={img.image.url}
+                  placeholder="blur"
+                  blurDataURL={img.image.url}
                 /> : ""}
                 
               </div>

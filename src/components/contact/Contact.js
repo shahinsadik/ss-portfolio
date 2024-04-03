@@ -14,7 +14,7 @@ const Contact = async () => {
         Contact Me
       </h1>
       <h1 className="text-right text-white mt-3">Get in Touch</h1>
-      <div className="grid lg:grid-cols-4 grid-cols-1 mt-5 gap-5">
+      <div data-aos="zoom-in" className="grid lg:grid-cols-4 grid-cols-1 mt-5 gap-5">
         <div className="border p-10 flex flex-col justify-center items-center  bg-[#333333]">
           <IoCallOutline className="hover:animate-spin text-4xl text-center mb-2 text-white " />
           <h1 className="text-center text-white ">
@@ -41,8 +41,8 @@ const Contact = async () => {
           <h1 className="text-center text-white">Got Hired</h1>
         </div>
       </div>
-      <div className="grid lg:grid-cols-2 grid-cols-1 p-2 lg:p-10 bg-[#333333] border lg:mx-20 gap-5   mt-5">
-        <div className="flex flex-col  ">
+      <div data-aos="zoom-in" className="grid lg:grid-cols-2 grid-cols-1 p-2 lg:p-10 bg-[#333333] border lg:mx-20 gap-5   mt-5">
+        <div  className="flex flex-col  ">
           <input
             id="Name"
             rows="1"
