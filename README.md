@@ -1,4 +1,21 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Portfolio Website
+
+This is a portfolio website built using Next.js and Tailwind CSS.
+
+
+
+## Description
+
+This project serves as a personal portfolio website to showcase your skills, projects, resume, and contact information. It is built with Next.js, a React framework, and Tailwind CSS, a utility-first CSS framework for rapid UI development.
+
+## Features
+
+- Responsive design
+- Dynamic routing with Next.js
+- Tailwind CSS for styling
+- Fetching data from an API
+- Smooth scrolling and active section highlighting
+- Mobile-friendly navigation menu
 
 ## Getting Started
 
